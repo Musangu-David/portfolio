@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio BTS SIO</title>
+<script>
+/* =====================================================================
+   MODIFIE UNIQUEMENT CE BLOC : tout le contenu du portfolio est ici.
+   - Garde les guillemets "..." et les virgules.
+   - Pour masquer une section : supprime sa ligne dans "sections".
+   - Pour ajouter un projet / une expérience / une compétence : copie un
+     bloc { ... }, colle-le à la suite (avec une virgule) et change le texte.
+   - Laisse "" pour masquer un champ (lien, téléphone, photo...).
+   ===================================================================== */
+const PORTFOLIO = {
+  nom: "Musangu Tshibangu David",
+  surnom: "David",
+  titre: "Étudiant en BTS SIO, option SISR",
+  accroche: "Je me forme aux réseaux, aux systèmes et à l'infrastructure, et je fais mon alternance dans l'informatique à l'Hôtel de ville de Fontenay-sous-Bois.",
+  photo: "",                       // ex : "photo.jpg" (sinon tes initiales s'affichent)
+
+  couleurs: { principale: "#5B4BFF", accent: "#FF5D73", soleil: "#FFC83D", menthe: "#1FB89A" },
+
+  sections: [                      // ordre = ordre des boutons en haut
+    { id: "accueil",     label: "Accueil" },
+    { id: "apropos",     label: "À propos" },
+    { id: "parcours",    label: "Mon parcours" },
+    { id: "ecole",       label: "Mon école" },
+    { id: "entreprise",  label: "Entreprise" },
+    { id: "competences", label: "Compétences" },
+    { id: "projets",     label: "Projets" },
+    { id: "experiences", label: "Stages et alternance" },
+    { id: "veille",      label: "Veille" },
+    { id: "contact",     label: "CV et contact" }
+  ],
+
+  apropos: {
+    textes: [
+      "Je suis en BTS SIO option SISR (Solutions d'Infrastructure, Systèmes et Réseaux) à l'UTEC de Melun.",
+      "Avant cela, j'ai passé un bac STI2D spécialité SIN (Systèmes d'Information et Numérique), obtenu avec mention Bien.",
+      "Ce que j'aime : comprendre comment les machines communiquent entre elles, dépanner et mettre en place des solutions concrètes."
+    ],
+    infos: [
+      { label: "Formation", valeur: "BTS SIO SISR, UTEC de Melun" },
+      { label: "Bac", valeur: "STI2D SIN, mention Bien" },
+      { label: "Lieu", valeur: "Roissy-en-Brie (77)" },
+      { label: "Loisirs", valeur: "Basket-ball, musculation, jeux vidéo, films et animés" }
+    ]
+  },
+
+  parcours: [                      // frise chronologique, du plus ancien au plus récent
+    { periode: "Classe de 3ème", titre: "Stage chez Informatique Minute",
+      texte: "Deux semaines en support informatique et assistance réseau à Roissy-en-Brie : mon premier contact avec le métier." },
+    { periode: "Fin de seconde, 2022-2023", titre: "Stage en vente de matériel électronique",
+      texte: "Deux semaines à Ozoir-la-Ferrière, dans le domaine de l'électronique." },
+    { periode: "Lycée", titre: "Bac STI2D, spécialité SIN",
+      texte: "Systèmes d'Information et Numérique, obtenu avec mention Bien." },
+    { periode: "2026 - 2028", titre: "BTS SIO option SISR à l'UTEC de Melun",
+      texte: "Formation en infrastructure, systèmes et réseaux, en vue d'une alternance." },
+    { periode: "En cours", titre: "Alternance à l'Hôtel de ville de Fontenay-sous-Bois",
+      texte: "Alternance dans le secteur informatique, en parallèle du BTS. Je prépare aussi mon permis B." }
+  ],
+
+  ecole: {
+    titre: "Mon école : l'UTEC",
+    texte: "L'UTEC est l'école de la CCI Seine-et-Marne, créée en 1982. Pluridisciplinaire, elle propose des formations du CAP au Bac+5, en apprentissage comme en formation continue. Je suis mon BTS SIO sur le campus de Melun.",
+    histoire: {
+      titre: "L'histoire de l'UTEC",
+      texte: "L'UTEC existe depuis 1982 et c'est l'école de la CCI Seine-et-Marne. Depuis plus de 40 ans, elle a pour mission de répondre aux besoins en compétences des entreprises du territoire tout en accompagnant les jeunes dans leur réussite professionnelle.",
+      reperes: [
+        { date: "1982", texte: "Création de l'UTEC." },
+        { date: "2025", texte: "L'école franchit une nouvelle étape en structurant son offre autour de quatre pôles d'expertise, en lien avec les attentes des jeunes et les besoins des entreprises." },
+        { date: "Aujourd'hui", texte: "Quatre campus (Avon-Fontainebleau, Émerainville-Marne-la-Vallée, Melun et Provins), près de 2 000 jeunes formés chaque année et plus de 1 500 entreprises partenaires. L'international fait historiquement partie de l'ADN de l'école." }
+      ],
+      note: "Sources : site de la CCI Paris Île-de-France (page UTEC) et fiche de l'UTEC Marne-la-Vallée sur le site de la FEDE."
+    },
+    chiffres: [
+      { valeur: "1982", label: "année de création de l'UTEC" },
+      { valeur: "4", label: "campus : Avon-Fontainebleau, Émerainville-Marne-la-Vallée, Melun, Provins" },
+      { valeur: "CAP à Bac+5", label: "niveaux de formation proposés" }
+    ],
+    poles: []                      // recopie ici les pôles de formation de l'UTEC (ex : "Pôle 1", "Pôle 2")
+  },
+
+  competences: [
+    { groupe: "Réseaux",  items: ["TCP/IP", "Machine virtuelle", "VirtualBox"] },
+    { groupe: "Systèmes", items: ["Windows", "Linux (bases)"] },
+    { groupe: "Programmation", items: ["Python", "C", "Arduino"] }
+    // Ajoute ici tes autres compétences : { groupe: "Virtualisation", items: ["VirtualBox", "..."] },
+  ],
+
+  projets: [
+    { titre: "Alarme de gaz pour robot secouriste",
+      contexte: "Projet « Advanced Rescue Robot »",
+      outils: ["Arduino", "Écran LCD", "Buzzer"],
+      description: "Programme d'alarme de gaz pour un robot secouriste : l'Arduino surveille la mesure, l'affiche sur un écran LCD et déclenche un buzzer lorsque le seuil de danger est dépassé. Le projet est présenté dans un diaporama.",
+      lien: "Start_Slide.pdf" },       // place le fichier Start_Slide.pdf à côté de cette page
+    { titre: "Maquette d'un lampadaire futuriste",
+      contexte: "Projet de groupe, première STI2D",
+      outils: ["SolidWorks", "Cahier des charges", "Diagramme de Gantt", "Panneaux solaires", "Batteries", "Capteurs"],
+      description: "En groupe, nous avons conçu la maquette d'un lampadaire futuriste. Nous avons rédigé un cahier des charges, planifié le travail avec un diagramme de Gantt, puis choisi les composants : câbles, panneaux solaires, batteries, capteurs et le système informatique qui pilote l'ensemble. Nous avons aussi réalisé la version 3D du lampadaire sur SolidWorks.",
+      lien: "" },
+    { titre: "Nom de ton projet 3",
+      contexte: "Contexte",
+      outils: ["Outil 1"],
+      description: "Exemple à remplacer.",
+      lien: "" }
+  ],
+
+  experiences: [
+    { periode: "Classe de 3ème, 2 semaines", lieu: "Informatique Minute, Roissy-en-Brie",
+      poste: "Stage : support informatique et assistance réseau",
+      description: "Stage d'observation et d'assistance dans le support informatique et le réseau. Ajoute ici tes missions précises et ce que tu as appris." },
+    { periode: "Fin de seconde, 2022-2023, 2 semaines", lieu: "Ozoir-la-Ferrière",
+      poste: "Stage : vente de matériel électronique",
+      description: "Stage dans la vente d'articles électroniques. Ajoute ici tes missions précises et ce que tu as appris." },
+    { periode: "En cours, BTS 2026-2028", lieu: "Hôtel de ville de Fontenay-sous-Bois",
+      poste: "Alternance : informatique",
+      description: "Alternance dans le secteur informatique, en parallèle du BTS SIO SISR. Ajoute ici tes missions au fur et à mesure." }
+  ],
+
+  entreprise: {
+    titre: "Mon entreprise : la Ville de Fontenay-sous-Bois",
+    texte: "Je fais mon alternance à l'Hôtel de ville de Fontenay-sous-Bois, dans le Val-de-Marne, au sein du service informatique de la mairie : la DSI (Direction des systèmes d'information). Une mairie est une collectivité territoriale : elle gère les services publics de proximité, et son informatique doit rester disponible et sécurisée pour que tous les autres services puissent travailler.",
+    infos: [
+      { label: "Employeur", valeur: "Ville de Fontenay-sous-Bois (collectivité territoriale)" },
+      { label: "Adresse", valeur: "Mairie, 4 Esplanade Louis Bayeurte, 94125 Fontenay-sous-Bois Cedex" },
+      { label: "Service", valeur: "DSI, Direction des systèmes d'information" },
+      { label: "Secteur", valeur: "Fonction publique territoriale, informatique" },
+      { label: "Tuteur", valeur: "" },                  // ex : "Prénom Nom, fonction" (laisse "" pour masquer)
+      { label: "Taille de l'équipe", valeur: "" }       // ex : "5 agents" (laisse "" pour masquer)
+    ],
+    chiffresTitre: "La ville en chiffres",
+    chiffresNote: "Une mairie ne vend pas de produits : elle n'a donc pas de chiffre d'affaires. Son équivalent est son budget, financé surtout par les impôts locaux, les dotations de l'État et la facturation des services. Source : rapport d'orientations budgétaires 2026 de la Ville de Fontenay-sous-Bois (février 2026).",
+    chiffres: [
+      { valeur: "≈ 119 M€", label: "de recettes de fonctionnement prévues en 2026" },
+      { valeur: "≈ 110 M€", label: "de dépenses réelles de fonctionnement prévues en 2026" },
+      { valeur: "23 M€", label: "d'investissements prévus en 2026" },
+      { valeur: "1 293", label: "agents au 31 décembre 2025" }
+    ],
+    dsi: {
+      titre: "La DSI : priorités et projets 2026",
+      texte: "La DSI est dirigée par un directeur des systèmes d'information. Pour 2026, la ville a fait du renforcement de la cybersécurité et du développement d'une intelligence artificielle « Ville » deux priorités. Source : rapport d'orientations budgétaires 2026 de la Ville de Fontenay-sous-Bois.",
+      missions: [
+        { titre: "Cybersécurité", texte: "La ville a formalisé une politique de sécurité qui identifie les risques, désigne les menaces et promeut des mesures de protection adaptées. Son renforcement est une priorité pour 2026." },
+        { titre: "Schéma directeur des systèmes d'information", texte: "Plan stratégique en cours d'élaboration, défini en 2026. Il doit moderniser l'administration, guider la gestion et le développement des ressources numériques et structurer les investissements." },
+        { titre: "Chatbot basé sur l'IA", texte: "Un chatbot prévu en 2026 sur le site de la ville, capable de répondre en temps réel aux questions des internautes." },
+        { titre: "Souveraineté numérique", texte: "La ville veut limiter sa dépendance aux géants du numérique, qui fait peser des risques de perte de contrôle des données, de coûts élevés et de dépendance technologique." },
+        { titre: "Investissement dans les systèmes d'information", texte: "Environ 2 M€ sont prévus en 2026 pour l'investissement courant des services et dans les systèmes d'information." }
+      ]
+    },
+    monRole: ""        // ex : "Mes missions : support aux utilisateurs, installation de postes, ..." (laisse "" pour masquer)
+  },
+
+  veille: {
+    sujet: "L'essor de l'IA et son avenir dans la cybersécurité",
+    description: "Je suis la progression très rapide de l'intelligence artificielle et son impact sur la cybersécurité. Elle aide à détecter plus vite les menaces et à automatiser la défense, mais elle donne aussi de nouveaux outils aux attaquants, par exemple des messages d'hameçonnage plus convaincants. Je cherche à comprendre ce que cela change pour les métiers des réseaux et de la sécurité.",
+    sources: [
+      { nom: "CERT-FR (ANSSI)", lien: "https://www.cert.ssi.gouv.fr" },
+      { nom: "LeMagIT", lien: "https://www.lemagit.fr" }
+    ]
+  },
+
+  contact: {
+    texte: "Une question, une opportunité, un échange ? Écris-moi.",
+    email: "davidmusangu17@gmail.com",
+    telephone: "",
+    linkedin: "https://www.linkedin.com/in/david-musangu-7456b83b9/",
+    github: "https://github.com/Musangu-David/portfolio",
+    cv: "cv.pdf"                   // place le fichier cv.pdf à côté de cette page
+  }
+};
+/* ============================ FIN DU BLOC À MODIFIER ============================ */
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;600;700&display=swap">
+<style>
+:root{--p:#5B4BFF;--a:#FF5D73;--s:#FFC83D;--m:#1FB89A;--ink:#1B1B3A;--bg:#F6F7FF;--mut:#555873}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font:17px/1.65 Figtree,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--p);outline-offset:3px}
+.wrap{max-width:1080px;margin:auto}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid #e1e3f5}
+nav .in{max-width:1080px;margin:auto;padding:12px 20px;display:flex;gap:8px;overflow-x:auto}
+nav a{flex:none;padding:8px 16px;border-radius:99px;text-decoration:none;font-weight:700;font-size:15px;background:#fff;border:2px solid #e1e3f5}
+nav a:hover{border-color:var(--p)}
+nav a.on{background:var(--p);border-color:var(--p);color:#fff}
+section{padding:80px 20px}
+main section:nth-of-type(even){background:#fff}
+h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.02em}
+h2::after{content:"";display:block;width:72px;height:8px;border-radius:8px;margin-top:14px;background:linear-gradient(90deg,var(--p),var(--a),var(--s))}
+.hero{position:relative;overflow:hidden;padding:80px 20px 96px}
+.hero-g{display:grid;gap:40px;align-items:center;grid-template-columns:1.3fr 1fr}
+.hi{font-weight:700;color:var(--p);font-size:1.15rem;margin:0 0 12px}
+.hero h1{font-size:clamp(2.8rem,8vw,5.8rem);font-weight:800;letter-spacing:-.035em;max-width:11ch}
+.lead{font-size:1.2rem;color:var(--mut);max-width:34em;margin:22px 0 30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:13px 24px;border-radius:14px;font-weight:700;text-decoration:none;border:2px solid var(--ink);background:#fff;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.pri{background:var(--p);color:#fff;border-color:var(--ink)}
+.btn.sun{background:var(--s)}
+.visual{position:relative;height:360px}
+.sh{position:absolute;display:block}
+.s1{width:230px;height:230px;border-radius:50%;background:var(--a);right:6%;top:0}
+.s2{width:150px;height:150px;border-radius:32px;background:var(--s);left:4%;bottom:6%;transform:rotate(14deg)}
+.s3{width:120px;height:120px;border-radius:120px 120px 0 0;background:var(--m);right:0;bottom:0}
+.avatar{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:220px;height:220px;border-radius:50%;border:5px solid var(--ink);background:var(--p);color:#fff;display:grid;place-items:center;font:800 4.4rem "Bricolage Grotesque",sans-serif;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));margin-top:40px}
+.card{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:24px;box-shadow:6px 6px 0 var(--c)}
+.card h3{font-size:1.35rem;margin-bottom:6px}
+.meta{color:var(--mut);font-size:.95rem;margin:0 0 12px}
+.card p{margin:0 0 14px}
+.tag{display:inline-block;padding:3px 12px;border-radius:99px;margin:0 6px 6px 0;font-size:.9rem;font-weight:700;background:color-mix(in srgb,var(--c) 22%,white)}
+.about{display:grid;gap:40px;grid-template-columns:1.4fr 1fr;margin-top:40px}
+.about p{margin:0 0 16px;max-width:60ch}
+.info{display:grid;gap:14px;align-content:start}
+.info div{border-left:6px solid var(--c);padding:4px 0 4px 16px}
+.info b{display:block;font-size:.9rem;color:var(--mut)}
+.big{display:inline-block;font:800 2rem/1.1 "Bricolage Grotesque",Figtree,sans-serif;margin:0 0 10px;box-shadow:inset 0 -10px 0 color-mix(in srgb,var(--c) 45%,white)}
+.tl{border-left:4px solid var(--p);margin:40px 0 0 8px;padding-left:30px}
+.ti{position:relative;margin-bottom:34px}
+.ti::before{content:"";position:absolute;left:-42px;top:4px;width:20px;height:20px;border-radius:50%;background:var(--c);border:3px solid var(--ink)}
+.ti h3{font-size:1.3rem}
+.ti .meta{margin:4px 0 8px}
+.veille{margin-top:40px;background:var(--bg);border:2px solid var(--ink);border-radius:20px;padding:28px;box-shadow:6px 6px 0 var(--m)}
+.veille h3{font-size:1.6rem;margin-bottom:10px}
+.veille ul{padding:0;margin:16px 0 0;list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.veille a{display:inline-block;padding:6px 16px;border-radius:99px;background:#fff;border:2px solid var(--ink);font-weight:700;text-decoration:none}
+.veille a:hover{background:var(--s)}
+.contact{margin-top:40px;background:var(--p);color:#fff;border-radius:24px;padding:40px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--a)}
+.contact p{font-size:1.25rem;margin:0 0 24px;max-width:30em}
+.contact .btn{color:var(--ink)}
+footer{padding:28px 20px;text-align:center;color:var(--mut);font-size:.95rem}
+@media(max-width:800px){.hero-g,.about{grid-template-columns:1fr}.visual{height:280px}.s1{width:170px;height:170px}.avatar{width:170px;height:170px;font-size:3.4rem}.contact{padding:28px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+<nav aria-label="Navigation du portfolio"><div class="in" id="nav"></div></nav>
+<main id="main"></main>
+<footer id="foot"></footer>
+<script>
+const P = PORTFOLIO;
+const e = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const col = i => `style="--c:var(--${["p","a","s","m"][i % 4]})"`;
+const root = document.documentElement.style;
+root.setProperty("--p", P.couleurs.principale);
+root.setProperty("--a", P.couleurs.accent);
+root.setProperty("--s", P.couleurs.soleil);
+root.setProperty("--m", P.couleurs.menthe);
+document.title = `${P.nom} | Portfolio BTS SIO`;
+
+const R = {
+  accueil() {
+    const ini = (P.surnom || P.nom).split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();
+    const av = P.photo ? `<img src="${e(P.photo)}" alt="Photo de ${e(P.nom)}">` : e(ini);
+    return `<div class="wrap hero-g"><div>
+      <p class="hi">Salut, moi c'est ${e(P.surnom)}.</p>
+      <h1>${e(P.nom)}</h1>
+      <p class="lead">${e(P.titre)}. ${e(P.accroche)}</p>
+      <div class="btns"><a class="btn pri" href="#projets">Voir mes projets</a><a class="btn" href="#contact">Me contacter</a></div>
+    </div><div class="visual" aria-hidden="true"><i class="sh s1"></i><i class="sh s2"></i><i class="sh s3"></i><div class="avatar">${av}</div></div></div>`;
+  },
+  apropos() {
+    const a = P.apropos;
+    return `<div class="wrap"><h2>À propos</h2><div class="about"><div>${a.textes.map(t => `<p>${e(t)}</p>`).join("")}</div>
+      <div class="info">${a.infos.map((x, i) => `<div ${col(i)}><b>${e(x.label)}</b>${e(x.valeur)}</div>`).join("")}</div></div></div>`;
+  },
+  parcours() {
+    return `<div class="wrap"><h2>Mon parcours</h2><div class="tl">${P.parcours.map((x, i) =>
+      `<div class="ti" ${col(i)}><h3>${e(x.titre)}</h3><p class="meta">${e(x.periode)}</p><p style="margin:0;max-width:60ch">${e(x.texte)}</p></div>`).join("")}</div></div>`;
+  },
+  ecole() {
+    const s = P.ecole, poles = s.poles || [];
+    return `<div class="wrap"><h2>${e(s.titre)}</h2><p style="max-width:60ch;margin:32px 0 0">${e(s.texte)}</p>
+      <div class="grid">${s.chiffres.map((c, i) => `<div class="card" ${col(i)}><span class="big" ${col(i)}>${e(c.valeur)}</span><p style="margin:0">${e(c.label)}</p></div>`).join("")}</div>
+      ${s.histoire ? `<h3 style="margin-top:44px">${e(s.histoire.titre)}</h3><p style="max-width:60ch;margin:14px 0 0">${e(s.histoire.texte)}</p>
+      <div class="grid" style="margin-top:20px">${(s.histoire.reperes || []).map((r, i) => `<div class="card" ${col(i)}><span class="big" ${col(i)}>${e(r.date)}</span><p style="margin:0">${e(r.texte)}</p></div>`).join("")}</div>
+      ${s.histoire.note ? `<p class="meta" style="margin:18px 0 0;max-width:70ch">${e(s.histoire.note)}</p>` : ""}` : ""}
+      ${poles.length ? `<h3 style="margin-top:44px">Pôles de formation</h3><div style="margin-top:14px">${poles.map((p, i) => `<span class="tag" ${col(i)}>${e(p)}</span>`).join("")}</div>` : ""}</div>`;
+  },
+  competences() {
+    return `<div class="wrap"><h2>Compétences</h2><div class="grid">${P.competences.map((g, i) =>
+      `<div class="card" ${col(i)}><h3>${e(g.groupe)}</h3><div style="margin-top:12px">${g.items.map(t => `<span class="tag">${e(t)}</span>`).join("")}</div></div>`).join("")}</div></div>`;
+  },
+  projets() {
+    return `<div class="wrap"><h2>Projets et réalisations</h2><div class="grid">${P.projets.map((p, i) =>
+      `<article class="card" ${col(i)}><h3>${e(p.titre)}</h3><p class="meta">${e(p.contexte)}</p><p>${e(p.description)}</p>
+      <div>${(p.outils || []).map(t => `<span class="tag">${e(t)}</span>`).join("")}</div>
+      ${p.lien ? `<p style="margin:10px 0 0"><a href="${e(p.lien)}" target="_blank" rel="noopener"><b>Voir le projet</b></a></p>` : ""}</article>`).join("")}</div></div>`;
+  },
+  experiences() {
+    return `<div class="wrap"><h2>Stages et alternance</h2><div class="tl">${P.experiences.map((x, i) =>
+      `<div class="ti" ${col(i)}><h3>${e(x.poste)}</h3><p class="meta">${e(x.lieu)}, ${e(x.periode)}</p><p style="margin:0;max-width:60ch">${e(x.description)}</p></div>`).join("")}</div></div>`;
+  },
+  entreprise() {
+    const s = P.entreprise, d = s.dsi || {}, infos = (s.infos || []).filter(x => x.valeur);
+    return `<div class="wrap"><h2>${e(s.titre)}</h2><p style="max-width:60ch;margin:32px 0 0">${e(s.texte)}</p>
+      ${infos.length ? `<div class="info" style="margin-top:32px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">${infos.map((x, i) => `<div ${col(i)}><b>${e(x.label)}</b>${e(x.valeur)}</div>`).join("")}</div>` : ""}
+      ${(s.chiffres || []).length ? `<h3 style="margin-top:44px">${e(s.chiffresTitre || "En chiffres")}</h3>
+      <div class="grid" style="margin-top:20px">${s.chiffres.map((c, i) => `<div class="card" ${col(i)}><span class="big" ${col(i)}>${e(c.valeur)}</span><p style="margin:0">${e(c.label)}</p></div>`).join("")}</div>
+      ${s.chiffresNote ? `<p class="meta" style="margin:18px 0 0;max-width:70ch">${e(s.chiffresNote)}</p>` : ""}` : ""}
+      <div class="veille"><h3>${e(d.titre)}</h3><p style="margin:0;max-width:60ch">${e(d.texte)}</p></div>
+      <div class="grid">${(d.missions || []).map((m, i) => `<div class="card" ${col(i)}><h3>${e(m.titre)}</h3><p style="margin:10px 0 0">${e(m.texte)}</p></div>`).join("")}</div>
+      ${s.monRole ? `<div class="card" style="--c:var(--a);margin-top:40px"><h3>Mon rôle</h3><p style="margin:10px 0 0">${e(s.monRole)}</p></div>` : ""}</div>`;
+  },
+  veille() {
+    const v = P.veille;
+    return `<div class="wrap"><h2>Veille technologique</h2><div class="veille"><h3>${e(v.sujet)}</h3><p style="margin:0;max-width:60ch">${e(v.description)}</p>
+      <ul>${(v.sources || []).map(s => `<li><a href="${e(s.lien)}" target="_blank" rel="noopener">${e(s.nom)}</a></li>`).join("")}</ul></div></div>`;
+  },
+  contact() {
+    const c = P.contact, b = [];
+    if (c.cv) b.push(`<a class="btn sun" href="${e(c.cv)}" download>Télécharger mon CV</a>`);
+    if (c.email) b.push(`<a class="btn" href="mailto:${e(c.email)}">${e(c.email)}</a>`);
+    if (c.telephone) b.push(`<a class="btn" href="tel:${e(c.telephone.replace(/\s/g, ""))}">${e(c.telephone)}</a>`);
+    if (c.linkedin) b.push(`<a class="btn" href="${e(c.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`);
+    if (c.github) b.push(`<a class="btn" href="${e(c.github)}" target="_blank" rel="noopener">GitHub</a>`);
+    return `<div class="wrap"><h2>CV et contact</h2><div class="contact"><p>${e(c.texte)}</p><div class="btns">${b.join("")}</div></div></div>`;
+  }
+};
+
+document.getElementById("nav").innerHTML = P.sections.map(s => `<a href="#${e(s.id)}">${e(s.label)}</a>`).join("");
+document.getElementById("main").innerHTML = P.sections.filter(s => R[s.id]).map(s =>
+  `<section id="${e(s.id)}"${s.id === "accueil" ? ' class="hero"' : ""}>${R[s.id]()}</section>`).join("");
+document.getElementById("foot").textContent = `© ${new Date().getFullYear()} ${P.nom}. Portfolio BTS SIO.`;
+
+const links = [...document.querySelectorAll("nav a")];
+const io = new IntersectionObserver(es => es.forEach(x => {
+  if (x.isIntersecting) links.forEach(l => l.classList.toggle("on", l.getAttribute("href") === "#" + x.target.id));
+}), { rootMargin: "-40% 0px -55% 0px" });
+document.querySelectorAll("main section").forEach(s => io.observe(s));
+</script>
+</body>
+</html>
